@@ -111,6 +111,8 @@ public class AtmServlet extends HttpServlet {
 	private String serveRequest(String action, HttpServletRequest request,
 			HttpServletResponse response, AtmCardInfo atmCard,
 			Map<String, Object> data) {
+
+		// so unreadable, you know functions exist, right?
 		if ("init".equals(action)) {
 			return "init";
 		} else if ("card_in".equals(action)) {

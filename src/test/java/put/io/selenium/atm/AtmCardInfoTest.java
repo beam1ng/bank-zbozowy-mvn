@@ -43,10 +43,13 @@ public class AtmCardInfoTest {
 	
 	@Test
 	public void testTryPinCardLocked() {
+		// act
 		fixture.cardIn();
 		fixture.tryPin("1524");
 		fixture.tryPin("1521");
 		fixture.tryPin("1520");
+
+		// assert
 		assertFalse(fixture.pinWasOk);
 		assertTrue(fixture.isCardLocked);
 		assertEquals(0, fixture.pinTriesLeft);
@@ -54,15 +57,21 @@ public class AtmCardInfoTest {
 
 	@Test
 	public void testTryWithdraw() {
+		// act
 		fixture.cardIn();
 		fixture.tryPin("1525");
+
+		// assert
 		assertEquals(1000, fixture.balance);
+		
+		// wtf is this
 		fixture.tryWithdraw("400");
 		assertEquals(600, fixture.balance);
 	}
 
 	@Test
 	public void testCardOut() {
+		// stupid structure in tests, should be like arrange act assert
 		assertFalse(fixture.isCardIn);
 		fixture.cardIn();
 		assertTrue(fixture.isCardIn);
